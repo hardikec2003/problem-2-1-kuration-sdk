@@ -1,0 +1,102 @@
+{
+  "scenario": "repair",
+  "decision": "repair",
+  "action_contract": {
+    "label": "repair",
+    "measured_windows": 16,
+    "in_band_windows": 7,
+    "anomaly_fraction": 0.5625,
+    "magnitude_ratio": {
+      "W": 0.4409064400212919,
+      "S": 0.3684570045705359
+    },
+    "symmetry_s_over_w": {
+      "reference": 0.9207900624363649,
+      "candidate": 0.7694864883970302
+    },
+    "baselines": {
+      "W": {
+        "1": {
+          "expected_sign": 1,
+          "min": 1.3112973868846893,
+          "max": 2.360335296392441
+        }
+      },
+      "S": {
+        "1": {
+          "expected_sign": -1,
+          "min": 1.2074296027421951,
+          "max": 2.1733732849359515
+        }
+      }
+    },
+    "shift_median": {
+      "reference": {
+        "W": 1.7483965158462524,
+        "S": -1.6099061369895935
+      },
+      "candidate": {
+        "W": 0.7708792835474014,
+        "S": -0.5931811928749084
+      }
+    }
+  },
+  "spatial_coverage": {
+    "label": "ok",
+    "windows": 21,
+    "quality_pass_fraction": 1.0,
+    "max_translation_jump_fraction": 0.0,
+    "turn_ratio": 1.0,
+    "path_ratio": 1.0,
+    "turn_median": {
+      "reference": 48.128454790989,
+      "candidate": 48.128454790989
+    },
+    "path_median": {
+      "reference": 0.7564609669728761,
+      "candidate": 0.7564609669728761
+    }
+  },
+  "keep_shards": [
+    {
+      "control": "W",
+      "path": "out/shiftgate/repair/keep-w",
+      "requested": 4,
+      "written": {
+        "shards": 4,
+        "selected": 4,
+        "segments_total": 16,
+        "sources_skipped": 0,
+        "n_train_sources": 3,
+        "n_test_sources": 1
+      }
+    },
+    {
+      "control": "S",
+      "path": "out/shiftgate/repair/keep-s",
+      "requested": 3,
+      "written": {
+        "shards": 3,
+        "selected": 3,
+        "segments_total": 16,
+        "sources_skipped": 0,
+        "n_train_sources": 3,
+        "n_test_sources": 0
+      }
+    }
+  ],
+  "sdk_gaps": [
+    "No corpus-diff operator: reference and candidate are two pipelines, and the ratio table is caller-side.",
+    "Baselines are caller-supplied. load_baselines_from_reference() expects a dataset-specific JSON this drop does not ship.",
+    "pixel_shift reports raw pixels. FOV, resolution, and mouse sensitivity are not normalized, so a 2x magnitude gap can be a capture setting.",
+    "Momentum after key release is not a pipeline column. The scorer sees per-press shift, not the decay curve from the paper.",
+    "S/W symmetry is reduced here from the two shift means. The SDK does not emit a symmetry feature.",
+    "aintropy/collision requires a map mesh plus a fitted dist JSON (trimesh/rtree). A drop with no geometry cannot be collision-oversampled.",
+    "slam_reconstruct from raw video needs the slam extra and a depth model. This gate scores trajectories the drop already has.",
+    "Per-window anomaly counts do not roll up to the clip verdict CONSISTENT/INCONSISTENT. That audit is dataset-mode only, after shards exist.",
+    "The action-state scorer has no bounded runtime. explain() warns that it materializes the whole candidate pool.",
+    "slam_quality_score stays high when one step in a window is impossible, because the penalty is a step fraction. slam_translation_jump_fraction is the usable flag.",
+    "sample('equal') is count-based. Rare-event oversampling exists as rare_event_coverage, but collision rate is not a field until the mesh operator runs.",
+    "The gate predicts the axis that tracked playability in the CS:GO/CS2 study. It does not certify playability."
+  ]
+}

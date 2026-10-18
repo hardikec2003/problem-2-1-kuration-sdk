@@ -1,0 +1,502 @@
+{
+  "shifts": 4,
+  "windows": 32,
+  "pool_contact_rate": 0.21875,
+  "jump_windows": [
+    {
+      "source": "glitch",
+      "start": 96
+    }
+  ],
+  "clean_windows": 31,
+  "rare_event_coverage": {
+    "selected": 6,
+    "contact_rate": 1.0
+  },
+  "budget_hours": {
+    "train": 0.0035555555555555557,
+    "test": 0.0008888888888888889
+  },
+  "delivered_contact_rate": 1.0,
+  "chronological_prefix_contact_rate": 0.0,
+  "output": {
+    "shards": 5,
+    "tracks_admitted": 5,
+    "tracks_total": 4,
+    "segments_total": 32,
+    "sources_skipped": 0,
+    "n_train_sources": 3,
+    "n_test_sources": 1,
+    "budget": {
+      "requested_seconds": {
+        "train": 12.8,
+        "test": 3.2
+      },
+      "admitted_seconds": {
+        "train": 12.8,
+        "test": 3.2
+      },
+      "underfill_seconds": {
+        "train": 0.0,
+        "test": 0.0
+      },
+      "candidate_seconds": {
+        "train": 12.8,
+        "test": 6.4
+      },
+      "items_total": 32,
+      "items_admitted": 5,
+      "items_rejected_nonfinite": 26,
+      "items_rejected_group_cap": 0,
+      "review": {
+        "decision_counts": {
+          "budget-filled": 1,
+          "nonfinite-priority": 26,
+          "priority": 5
+        },
+        "priority": {
+          "admitted": {
+            "min": -8.0,
+            "max": -1.0,
+            "count": 5,
+            "mean": -4.6
+          },
+          "rejected": {
+            "min": -6.0,
+            "max": -6.0,
+            "count": 1,
+            "mean": -6.0
+          }
+        },
+        "examples": {
+          "admitted": [
+            {
+              "id": [
+                "picker",
+                0,
+                6
+              ],
+              "source": "picker",
+              "split": "test",
+              "priority": -1.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                4
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": -3.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                5
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": -4.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 160,
+              "end": 192,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                6
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": -7.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                6
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": -8.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "priority"
+            }
+          ],
+          "rejected": [
+            {
+              "id": [
+                "picker",
+                0,
+                4
+              ],
+              "source": "picker",
+              "split": "test",
+              "priority": -6.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "budget-filled"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                0
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 0,
+              "end": 32,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                1
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 32,
+              "end": 64,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                2
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 64,
+              "end": 96,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                3
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 96,
+              "end": 128,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                4
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                6
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                7
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 224,
+              "end": 256,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                0
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 0,
+              "end": 32,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                1
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 32,
+              "end": 64,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                2
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 64,
+              "end": 96,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                3
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 96,
+              "end": 128,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                5
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 160,
+              "end": 192,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                7
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 224,
+              "end": 256,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                0
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 0,
+              "end": 32,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                1
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 32,
+              "end": 64,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                2
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 64,
+              "end": 96,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                3
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 96,
+              "end": 128,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                4
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                5
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 160,
+              "end": 192,
+              "decision": "nonfinite-priority"
+            }
+          ]
+        }
+      },
+      "emitted_seconds": {
+        "train": 12.8,
+        "test": 3.2
+      },
+      "emission_loss_seconds": {
+        "train": 0.0,
+        "test": 0.0
+      },
+      "emitted_underfill_seconds": {
+        "train": 0.0,
+        "test": 0.0
+      }
+    }
+  },
+  "shards": "out/fleetgate/hours",
+  "sdk_gaps": [
+    "rare_event_coverage only takes a count. An hour budget cannot call it, so the delivery uses the same contact-rate feature with sample('equal', hours=) after a contact filter.",
+    "sample('weighted') materializes the whole pool and has no hours or streaming path.",
+    "Contact is a field the fleet must already log. The SDK does not detect gripper contact from video.",
+    "aintropy/collision needs a Counter-Strike mesh and a fitted distance file, so it is the wrong operator for a robot aisle.",
+    "slam_quality_score stays high when a single step teleports, because the penalty is a fraction of steps. The filter uses slam_translation_jump_fraction.",
+    "slam_reconstruct from raw video needs the slam extra and a depth model. This run uses the pose the robot already recorded.",
+    "pixel_shift applies to isolated keyboard presses, not to a continuous drive command."
+  ]
+}

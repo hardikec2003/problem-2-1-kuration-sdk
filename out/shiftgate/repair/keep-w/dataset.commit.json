@@ -1,0 +1,15 @@
+{
+  "artifact_format_version": "1.3",
+  "files": {
+    "config.json": {
+      "sha256": "a6cf67e56a647e02d7b44ac6d60cbf21e48aa25b45e9e46070243832d979fa86",
+      "size_bytes": 32331
+    },
+    "dataset_manifest.json": {
+      "sha256": "f11e8265a4dc893fbda9e68d43b739f02b2ded895c8f9aabad368ece79b54e6e",
+      "size_bytes": 3131
+    }
+  },
+  "protocol": "sidecar-v1",
+  "state": "committed"
+}

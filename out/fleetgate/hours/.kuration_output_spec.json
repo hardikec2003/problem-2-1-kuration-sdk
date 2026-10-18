@@ -1,0 +1,43 @@
+{
+  "artifact_format_version": "1.3",
+  "run_fingerprint": "54f3d078621f3fa4ce9ad6b7623eb039fd76b400a5cf2b17c389c94b1600b993",
+  "output": {
+    "container": "npz",
+    "modalities": {
+      "camera_position": {
+        "dtype": "float32",
+        "shape": [
+          3
+        ],
+        "source": "field:camera_position"
+      },
+      "camera_z_axis": {
+        "dtype": "float32",
+        "shape": [
+          3
+        ],
+        "source": "field:camera_z_axis"
+      },
+      "command": {
+        "dtype": "float32",
+        "shape": [
+          3
+        ],
+        "source": "field:command"
+      },
+      "contact": {
+        "dtype": "float32",
+        "shape": [],
+        "source": "field:contact"
+      },
+      "tracking_confidence": {
+        "dtype": "float32",
+        "shape": [],
+        "source": "field:tracking_confidence"
+      }
+    },
+    "presence_mask": true,
+    "shard_length": 32,
+    "short_policy": "keep"
+  }
+}

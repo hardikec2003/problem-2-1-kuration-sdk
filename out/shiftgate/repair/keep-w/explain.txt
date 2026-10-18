@@ -1,0 +1,8 @@
+source: JoinedMediaAdapter (8 source(s))
+schema: shiftgate-gameplay
+window: 8 steps (stride 8)
+selection: uniform-bins (count=4)
+execution: local; errors=raise; total-pool materialization=scorer:aintropy/action-state-consistency
+optional extras: pixel-shift, video
+warning [unbounded-operator]: scorer:aintropy/action-state-consistency has no bounded runtime yet
+  fix: For a bounded exact run, prefer top-k or uniform-bins without global filters/scorers; otherwise size the candidate pool for memory.

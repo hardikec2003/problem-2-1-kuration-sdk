@@ -1,0 +1,91 @@
+{
+  "artifact_format_version": "1.3",
+  "commit_protocol": "sidecar-v1",
+  "count": 3,
+  "shards": [
+    {
+      "path": "train/repair-healthy-00_0_seg00000008_00000016_ca80cdd5adb6_shard0000.npz",
+      "source_id": "repair-healthy-00",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "repair-healthy-00_0_seg00000008_00000016_ca80cdd5adb6",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "44603de40fc140cc30ce3d06f92f3337ff51aa3202ed2c7e4443ac432b111c93",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/repair-healthy-01_0_seg00000008_00000016_303c6af424b4_shard0000.npz",
+      "source_id": "repair-healthy-01",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "repair-healthy-01_0_seg00000008_00000016_303c6af424b4",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "0bed59d271d2abf3617148b798d7b9981aab4713554a0d68639d81a106194ddc",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/repair-healthy-03_0_seg00000008_00000016_fac1c4409299_shard0000.npz",
+      "source_id": "repair-healthy-03",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "repair-healthy-03_0_seg00000008_00000016_fac1c4409299",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "c36705509181e730d96e3e9309b8aa7cd8c09fc43dc6e57a88d8ee8e1e498a52",
+      "size_bytes": 78016
+    }
+  ]
+}

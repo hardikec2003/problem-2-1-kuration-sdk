@@ -1,0 +1,175 @@
+{
+  "artifact_format_version": "1.3",
+  "commit_protocol": "sidecar-v1",
+  "count": 6,
+  "shards": [
+    {
+      "path": "test/accept-healthy-00_0_seg00000008_00000016_1c701efa9e86_shard0000.npz",
+      "source_id": "accept-healthy-00",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "test",
+      "track_id": "accept-healthy-00_0_seg00000008_00000016_1c701efa9e86",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "2dcdc5b6cdbfcb5e9fafdddb622a1073da9fe91b4d09d9b3b9e45da2477a7fde",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-01_0_seg00000008_00000016_eb87c5ef7027_shard0000.npz",
+      "source_id": "accept-healthy-01",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-01_0_seg00000008_00000016_eb87c5ef7027",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "e545f04f97aa49e61e14253e197eacf6ca749f2777166246e34b1aae9dfa7b88",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-02_0_seg00000008_00000016_bf387397c294_shard0000.npz",
+      "source_id": "accept-healthy-02",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-02_0_seg00000008_00000016_bf387397c294",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "3639a3367361d9c3e790f133cac89564a91000d968822741cd19b5ae27c8f32d",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-03_0_seg00000008_00000016_48a6bce71a55_shard0000.npz",
+      "source_id": "accept-healthy-03",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-03_0_seg00000008_00000016_48a6bce71a55",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "019d93849f8fa307244ac3213058028605e23dedd11d65da11ee1c38367035f8",
+      "size_bytes": 78016
+    },
+    {
+      "path": "test/accept-healthy-04_0_seg00000008_00000016_057230c226e4_shard0000.npz",
+      "source_id": "accept-healthy-04",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "test",
+      "track_id": "accept-healthy-04_0_seg00000008_00000016_057230c226e4",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "fabef2ba4c8dae90f38298a80627dbba4b4c5e01db6f8079edc6d3437a154499",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-05_0_seg00000008_00000016_d4e952776f1e_shard0000.npz",
+      "source_id": "accept-healthy-05",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-05_0_seg00000008_00000016_d4e952776f1e",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "19d4f5fcc8cb8bd01aaff2e3d0e063e06b8d5f9d4ae38d46a87b72d9ba72c1d0",
+      "size_bytes": 78016
+    }
+  ]
+}

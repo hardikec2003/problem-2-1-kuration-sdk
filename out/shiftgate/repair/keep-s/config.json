@@ -1,0 +1,1231 @@
+{
+  "artifact_format_version": "1.3",
+  "schema": {
+    "name": "shiftgate-gameplay",
+    "fields": {
+      "action": {
+        "kind": "vector",
+        "dims": [
+          "a0",
+          "a1",
+          "a2",
+          "a3",
+          "a4",
+          "a5",
+          "a6",
+          "a7",
+          "a8",
+          "a9",
+          "a10",
+          "a11",
+          "a12",
+          "a13",
+          "a14",
+          "a15",
+          "a16",
+          "a17",
+          "a18",
+          "a19",
+          "a20",
+          "a21",
+          "a22",
+          "a23",
+          "a24",
+          "a25",
+          "a26",
+          "a27",
+          "a28",
+          "a29",
+          "a30",
+          "a31",
+          "a32",
+          "a33",
+          "a34",
+          "a35",
+          "a36",
+          "a37",
+          "a38",
+          "a39",
+          "a40",
+          "a41",
+          "a42",
+          "a43",
+          "a44",
+          "a45",
+          "a46",
+          "a47",
+          "a48",
+          "a49",
+          "a50"
+        ]
+      },
+      "pressed": {
+        "kind": "scalar"
+      }
+    },
+    "media": {
+      "frame": {
+        "kind": "video-frame",
+        "dtype": "uint8",
+        "shape": [
+          48,
+          64,
+          3
+        ],
+        "layout": "HWC",
+        "color_space": "RGB",
+        "timing": "pts",
+        "capabilities": {
+          "streaming": true,
+          "variable_frame_rate": true
+        }
+      }
+    },
+    "sample_hz": 1.0
+  },
+  "strategy": {
+    "name": "pipeline",
+    "define": {
+      "press_rate": {
+        "source": "pressed",
+        "reduce": "rate"
+      }
+    },
+    "feature_space": null,
+    "filters": [],
+    "tags": null,
+    "scorers": [
+      {
+        "name": "aintropy/action-state-consistency",
+        "as": "action_state_anomaly",
+        "baselines": {
+          "W": {
+            "1": {
+              "expected_sign": 1,
+              "min": 1.3112973868846893,
+              "max": 2.360335296392441
+            }
+          },
+          "S": {
+            "1": {
+              "expected_sign": -1,
+              "min": 1.2074296027421951,
+              "max": 2.1733732849359515
+            }
+          }
+        },
+        "controls": [
+          "W",
+          "S"
+        ]
+      }
+    ],
+    "binning": {
+      "axes": [
+        {
+          "metric": "s_shift_mean",
+          "bins": 2
+        }
+      ]
+    },
+    "selection": {
+      "method": "uniform-bins",
+      "weights": {},
+      "normalize": "quantile",
+      "target": "flat",
+      "tag_coverage": null,
+      "group_cap": null,
+      "predicates": [
+        {
+          "metric": "press_rate",
+          "op": ">=",
+          "value": 0.125
+        },
+        {
+          "metric": "action_state_anomaly",
+          "op": "<=",
+          "value": 0.0
+        },
+        {
+          "metric": "s_shift_measured",
+          "op": ">=",
+          "value": 1.0
+        }
+      ]
+    }
+  },
+  "seed": 7,
+  "started": null,
+  "ended": null,
+  "results": {
+    "shards": 3,
+    "selected": 3,
+    "segments_total": 16,
+    "sources_skipped": 0,
+    "n_train_sources": 3,
+    "n_test_sources": 0
+  },
+  "plugins": [],
+  "output": {
+    "shard_length": 8,
+    "short_policy": "keep",
+    "container": "npz",
+    "presence_mask": true,
+    "modalities": {
+      "frames": {
+        "dtype": "uint8",
+        "shape": [
+          48,
+          64,
+          3
+        ],
+        "source": "media:frame"
+      },
+      "actions": {
+        "dtype": "float64",
+        "shape": [
+          51
+        ],
+        "source": "field:action"
+      }
+    }
+  },
+  "provenance": {
+    "fingerprint": "6b9d939e7c82a6361361b51c6901ef08d12d66b7f3676641dc7ac4487eb67f8b",
+    "payload": {
+      "adapter": {
+        "code_sha256": "c8126d62ce470b97e3e2dbe2bbd6c59215641de207e00867912aa3b0eee56a4e",
+        "state_sha256": "555264a437dc2053d16cbf6dbc3d9f6820aa31e0f39508fa6383fcddaf1b838c",
+        "type": "kuration.core.media.JoinedMediaAdapter"
+      },
+      "artifact_format_version": "1.3",
+      "budgets": {
+        "test_hours": null,
+        "train_hours": null
+      },
+      "clip_aggregate": "count-selection",
+      "encoder": {
+        "code_sha256": "c19c6baec270c4888e89417e81e725f5ab1241706470e2b5dbac4c004d716630",
+        "state_sha256": "ebc9164917b58481aea37d400c969b8001c734b7034b1f2e69dc378af8381791",
+        "type": "kuration.core.output.base.PassthroughEncoder"
+      },
+      "extensions": [
+        {
+          "capabilities": {
+            "streaming": true
+          },
+          "description": "",
+          "fingerprint": "30f80f5e08871f453e38f23df5822d4805389239fb901f22ae9c1d1e66f4d7cc",
+          "kind": "method",
+          "module": "kuration.core.strategy",
+          "name": "uniform-bins",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "stable"
+        },
+        {
+          "capabilities": {
+            "remote_paths": true,
+            "streaming": true
+          },
+          "description": "",
+          "fingerprint": "57014925a2e9687901fd4a3f0cf144a94140176652ab6488bae701a9278957ba",
+          "kind": "container",
+          "module": "kuration.core.output.containers",
+          "name": "npz",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "stable"
+        },
+        {
+          "capabilities": {
+            "cross_segment": true,
+            "stateful": true
+          },
+          "description": "Per-window count of pixel-shift instances inconsistent with the configured (or self-calibrated) action-state baseline",
+          "documentation": "https://aintropy-ai.github.io/kuration-sdk/action-state-consistency/",
+          "extra": "action-state",
+          "fingerprint": "4b3f21da732a5a4cf84bbe581f183db272783f5372d8341cc38b1c1c8a1cbf8d",
+          "install_hint": "pip install \"kuration-sdk[action-state]\"",
+          "kind": "scorer",
+          "module": "kuration.gameplay.action_state_consistency.action_state",
+          "name": "aintropy/action-state-consistency",
+          "package": "kuration-sdk",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "baselines": {
+                "additionalProperties": {
+                  "additionalProperties": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "expected_sign": {
+                        "enum": [
+                          1,
+                          -1
+                        ],
+                        "type": "integer"
+                      },
+                      "max": {
+                        "minimum": 0,
+                        "type": "number"
+                      },
+                      "min": {
+                        "minimum": 0,
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "expected_sign",
+                      "min",
+                      "max"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "object"
+                },
+                "type": "object"
+              },
+              "calibration": {
+                "additionalProperties": false,
+                "properties": {
+                  "min_clips": {
+                    "minimum": 2,
+                    "type": "integer"
+                  },
+                  "min_samples": {
+                    "minimum": 2,
+                    "type": "integer"
+                  },
+                  "sign_consensus": {
+                    "exclusiveMinimum": 0.5,
+                    "maximum": 1,
+                    "type": "number"
+                  },
+                  "tolerance": {
+                    "minimum": 1,
+                    "type": "number"
+                  }
+                },
+                "type": "object"
+              },
+              "controls": {
+                "items": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "experimental",
+          "version": "1"
+        },
+        {
+          "capabilities": {},
+          "description": "Per-segment pixel-shift statistics for isolated key/mouse presses",
+          "documentation": "https://aintropy-ai.github.io/kuration-sdk/pixel-shift/",
+          "extra": "pixel-shift",
+          "fingerprint": "ad910d846c14cb3d5bb705b401233f9875836419eb2c29ebf7a49d277a9a978f",
+          "install_hint": "pip install \"kuration-sdk[pixel-shift]\"",
+          "kind": "transform",
+          "module": "kuration.gameplay.pixel_shift.pixel_shift_operator",
+          "name": "aintropy/pixel-shift",
+          "package": "kuration-sdk",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "boundary": {
+                "default": "exclude",
+                "description": "How to handle a targeted press clipped by a segment edge. 'exclude' is conservative; 'error' requires context; 'assume-inactive' treats outside frames as inactive.",
+                "enum": [
+                  "exclude",
+                  "error",
+                  "assume-inactive"
+                ],
+                "type": "string"
+              },
+              "controls": {
+                "description": "Subset of W/S/A/D/MOUSE_X_POS/.../MOUSE_Y_NEG to measure; the default is all eight controls.",
+                "items": {
+                  "enum": [
+                    "W",
+                    "S",
+                    "A",
+                    "D",
+                    "MOUSE_X_POS",
+                    "MOUSE_X_NEG",
+                    "MOUSE_Y_POS",
+                    "MOUSE_Y_NEG"
+                  ],
+                  "type": "string"
+                },
+                "minItems": 1,
+                "type": "array",
+                "uniqueItems": true
+              }
+            },
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "experimental",
+          "version": "1"
+        }
+      ],
+      "group_of": null,
+      "output": {
+        "container": "npz",
+        "modalities": {
+          "actions": {
+            "dtype": "float64",
+            "shape": [
+              51
+            ],
+            "source": "field:action"
+          },
+          "frames": {
+            "dtype": "uint8",
+            "shape": [
+              48,
+              64,
+              3
+            ],
+            "source": "media:frame"
+          }
+        },
+        "presence_mask": true,
+        "shard_length": 8,
+        "short_policy": "keep"
+      },
+      "plugins": [],
+      "sample_hz": 1.0,
+      "schema": {
+        "fields": {
+          "action": {
+            "dims": [
+              "a0",
+              "a1",
+              "a2",
+              "a3",
+              "a4",
+              "a5",
+              "a6",
+              "a7",
+              "a8",
+              "a9",
+              "a10",
+              "a11",
+              "a12",
+              "a13",
+              "a14",
+              "a15",
+              "a16",
+              "a17",
+              "a18",
+              "a19",
+              "a20",
+              "a21",
+              "a22",
+              "a23",
+              "a24",
+              "a25",
+              "a26",
+              "a27",
+              "a28",
+              "a29",
+              "a30",
+              "a31",
+              "a32",
+              "a33",
+              "a34",
+              "a35",
+              "a36",
+              "a37",
+              "a38",
+              "a39",
+              "a40",
+              "a41",
+              "a42",
+              "a43",
+              "a44",
+              "a45",
+              "a46",
+              "a47",
+              "a48",
+              "a49",
+              "a50"
+            ],
+            "kind": "vector"
+          },
+          "pressed": {
+            "kind": "scalar"
+          }
+        },
+        "media": {
+          "frame": {
+            "capabilities": {
+              "streaming": true,
+              "variable_frame_rate": true
+            },
+            "color_space": "RGB",
+            "dtype": "uint8",
+            "kind": "video-frame",
+            "layout": "HWC",
+            "shape": [
+              48,
+              64,
+              3
+            ],
+            "timing": "pts"
+          }
+        },
+        "name": "shiftgate-gameplay",
+        "sample_hz": 1.0
+      },
+      "sdk_version": "unknown",
+      "seed": 7,
+      "segmenter": {
+        "stride": 8,
+        "window": 8
+      },
+      "sources": [
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-healthy-00",
+              "source_id_sha256": "31a0436705c1cdb783d5ae75d75f7ecddd14910df91fa3c85fcfe74163a1542e",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-healthy-00",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-healthy-00",
+          "source_id_sha256": "0bc3384e1df24a2651ebd8b5a4bdea43e439438aa1784ea27d805a9cfa9363f7",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-healthy-01",
+              "source_id_sha256": "65718894505773a7c8fc3a690d50b745427805fea6072d0f25f94891ddd75b05",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-healthy-01",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-healthy-01",
+          "source_id_sha256": "eff165541b53fd568050f2dc9eda1df91e3d508139feee5ace249eaa8a5d66a9",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-healthy-02",
+              "source_id_sha256": "78a18a153caee451dd97f3b65a6fef246c377f244c7a7cdb478e174fbee76429",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-healthy-02",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-healthy-02",
+          "source_id_sha256": "bdda47ba1bc7b12265cd5b263ab65d2e57b8527247a7ed5de58fee18f13715e6",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-healthy-03",
+              "source_id_sha256": "523b8dc12175187e3959ac16a960390c7d8f44124a63f0f32c47419b82743ff4",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-healthy-03",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-healthy-03",
+          "source_id_sha256": "d44ee88619f3f0255387521a5bd78537435bf4b5e6ab5a092ccc72be3569b41b",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-inverted-06",
+              "source_id_sha256": "3a9638ade2ccd6f039b365cd48ebbb7769a69bbd619ccf30ea49e59aaf403041",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-inverted-06",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-inverted-06",
+          "source_id_sha256": "347c524338291b33a102b557ab1ca307c7761de2781b6d8217c3345f0c613837",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-inverted-07",
+              "source_id_sha256": "19f7fe29433f49de3718d0d4cf112d1bbebed6b08a56eb0effa04a8168b71fe5",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-inverted-07",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-inverted-07",
+          "source_id_sha256": "df9ca8ac14e3b74cd02062c2f700f4be429415a7579e28989b92871939121927",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-weak-04",
+              "source_id_sha256": "0ea2fbc26ef46e91ed719675bf9a89665d2386ccbd82232450ab5c0a797b0ddf",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-weak-04",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-weak-04",
+          "source_id_sha256": "18eeadccbc5b77f63fbce9cb9031b9d9e04dd546f6ab9064e62d399a2f969f8a",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": {
+            "data": {
+              "fingerprint": "e8216973bc7181ed9daf951dab482f03fb2ca94cc728c0dbf1146de01396c1d1",
+              "source": "repair-weak-05",
+              "source_id_sha256": "650ff914fd9fc74e0612ba634912a17f361c650b4f8aab9e88a7937dfdae5356",
+              "strength": "adapter"
+            },
+            "video": {
+              "metadata": {
+                "non_path": true
+              },
+              "source": "repair-weak-05",
+              "strength": "identifier"
+            }
+          },
+          "source": "repair-weak-05",
+          "source_id_sha256": "ee07fd8816ddf81dc0458967650d35bcd991dd3bdd61eb5bf802d716ab2ed8f9",
+          "strength": "adapter"
+        }
+      ],
+      "span_len": 8,
+      "strategy": {
+        "binning": {
+          "axes": [
+            {
+              "bins": 2,
+              "metric": "s_shift_mean"
+            }
+          ]
+        },
+        "define": {
+          "press_rate": {
+            "reduce": "rate",
+            "source": "pressed"
+          }
+        },
+        "feature_space": null,
+        "filters": [],
+        "name": "pipeline",
+        "scorers": [
+          {
+            "as": "action_state_anomaly",
+            "baselines": {
+              "S": {
+                "1": {
+                  "expected_sign": -1,
+                  "max": 2.1733732849359515,
+                  "min": 1.2074296027421951
+                }
+              },
+              "W": {
+                "1": {
+                  "expected_sign": 1,
+                  "max": 2.360335296392441,
+                  "min": 1.3112973868846893
+                }
+              }
+            },
+            "controls": [
+              "W",
+              "S"
+            ],
+            "name": "aintropy/action-state-consistency"
+          }
+        ],
+        "selection": {
+          "group_cap": null,
+          "method": "uniform-bins",
+          "normalize": "quantile",
+          "predicates": [
+            {
+              "metric": "press_rate",
+              "op": ">=",
+              "value": 0.125
+            },
+            {
+              "metric": "action_state_anomaly",
+              "op": "<=",
+              "value": 0.0
+            },
+            {
+              "metric": "s_shift_measured",
+              "op": ">=",
+              "value": 1.0
+            }
+          ],
+          "tag_coverage": null,
+          "target": "flat",
+          "weights": {}
+        },
+        "tags": null
+      },
+      "tags_of": null,
+      "transforms": [
+        {
+          "batch_size": 1,
+          "device": "cpu",
+          "implementation": "aintropy/pixel-shift",
+          "input_roles": {
+            "field:action": "field:action",
+            "media:frame": "media:frame"
+          },
+          "inputs": [
+            "media:frame",
+            "field:action"
+          ],
+          "lookahead": 3,
+          "lookahead_tokens": {
+            "field:action": 3,
+            "media:frame": 3
+          },
+          "lookbehind": 1,
+          "lookbehind_tokens": {
+            "field:action": 1
+          },
+          "name": "aintropy/pixel-shift",
+          "outputs": [
+            "w_shift_min",
+            "w_shift_max",
+            "w_shift_mean",
+            "w_shift_measured",
+            "w_n_instances",
+            "w_requested",
+            "s_shift_min",
+            "s_shift_max",
+            "s_shift_mean",
+            "s_shift_measured",
+            "s_n_instances",
+            "s_requested",
+            "a_shift_min",
+            "a_shift_max",
+            "a_shift_mean",
+            "a_shift_measured",
+            "a_n_instances",
+            "a_requested",
+            "d_shift_min",
+            "d_shift_max",
+            "d_shift_mean",
+            "d_shift_measured",
+            "d_n_instances",
+            "d_requested",
+            "mouse_x_pos_shift_min",
+            "mouse_x_pos_shift_max",
+            "mouse_x_pos_shift_mean",
+            "mouse_x_pos_shift_measured",
+            "mouse_x_pos_n_instances",
+            "mouse_x_pos_requested",
+            "mouse_x_neg_shift_min",
+            "mouse_x_neg_shift_max",
+            "mouse_x_neg_shift_mean",
+            "mouse_x_neg_shift_measured",
+            "mouse_x_neg_n_instances",
+            "mouse_x_neg_requested",
+            "mouse_y_pos_shift_min",
+            "mouse_y_pos_shift_max",
+            "mouse_y_pos_shift_mean",
+            "mouse_y_pos_shift_measured",
+            "mouse_y_pos_n_instances",
+            "mouse_y_pos_requested",
+            "mouse_y_neg_shift_min",
+            "mouse_y_neg_shift_max",
+            "mouse_y_neg_shift_mean",
+            "mouse_y_neg_shift_measured",
+            "mouse_y_neg_n_instances",
+            "mouse_y_neg_requested"
+          ],
+          "ownership": "rightmost-start",
+          "params": {
+            "boundary": "exclude",
+            "controls": [
+              "W",
+              "S"
+            ]
+          },
+          "resources": {
+            "num_gpus": 0
+          }
+        }
+      ]
+    }
+  },
+  "pipeline": [
+    {
+      "op": "input",
+      "args": [
+        "<in-memory dict>"
+      ],
+      "kwargs": {
+        "schema": {
+          "name": "shiftgate-gameplay",
+          "fields": {
+            "action": {
+              "kind": "vector",
+              "dims": [
+                "a0",
+                "a1",
+                "a2",
+                "a3",
+                "a4",
+                "a5",
+                "a6",
+                "a7",
+                "a8",
+                "a9",
+                "a10",
+                "a11",
+                "a12",
+                "a13",
+                "a14",
+                "a15",
+                "a16",
+                "a17",
+                "a18",
+                "a19",
+                "a20",
+                "a21",
+                "a22",
+                "a23",
+                "a24",
+                "a25",
+                "a26",
+                "a27",
+                "a28",
+                "a29",
+                "a30",
+                "a31",
+                "a32",
+                "a33",
+                "a34",
+                "a35",
+                "a36",
+                "a37",
+                "a38",
+                "a39",
+                "a40",
+                "a41",
+                "a42",
+                "a43",
+                "a44",
+                "a45",
+                "a46",
+                "a47",
+                "a48",
+                "a49",
+                "a50"
+              ]
+            },
+            "pressed": {
+              "kind": "scalar"
+            }
+          },
+          "sample_hz": 1.0
+        },
+        "fields": {
+          "action": [
+            "a0",
+            "a1",
+            "a2",
+            "a3",
+            "a4",
+            "a5",
+            "a6",
+            "a7",
+            "a8",
+            "a9",
+            "a10",
+            "a11",
+            "a12",
+            "a13",
+            "a14",
+            "a15",
+            "a16",
+            "a17",
+            "a18",
+            "a19",
+            "a20",
+            "a21",
+            "a22",
+            "a23",
+            "a24",
+            "a25",
+            "a26",
+            "a27",
+            "a28",
+            "a29",
+            "a30",
+            "a31",
+            "a32",
+            "a33",
+            "a34",
+            "a35",
+            "a36",
+            "a37",
+            "a38",
+            "a39",
+            "a40",
+            "a41",
+            "a42",
+            "a43",
+            "a44",
+            "a45",
+            "a46",
+            "a47",
+            "a48",
+            "a49",
+            "a50"
+          ],
+          "pressed": "pressed"
+        },
+        "time": "t",
+        "sample": 200
+      }
+    },
+    {
+      "op": "join_video",
+      "args": [],
+      "kwargs": {
+        "videos": {
+          "repair-healthy-00": "repair-healthy-00",
+          "repair-healthy-01": "repair-healthy-01",
+          "repair-healthy-02": "repair-healthy-02",
+          "repair-healthy-03": "repair-healthy-03",
+          "repair-weak-04": "repair-weak-04",
+          "repair-weak-05": "repair-weak-05",
+          "repair-inverted-06": "repair-inverted-06",
+          "repair-inverted-07": "repair-inverted-07"
+        },
+        "column": "frame",
+        "on": "frame_index",
+        "mismatch": "error"
+      }
+    },
+    {
+      "op": "window",
+      "args": [
+        8
+      ],
+      "kwargs": {
+        "stride": 8,
+        "unit": "steps"
+      }
+    },
+    {
+      "op": "apply",
+      "args": [
+        "aintropy/pixel-shift"
+      ],
+      "kwargs": {
+        "controls": [
+          "W",
+          "S"
+        ]
+      },
+      "component": {
+        "name": "aintropy/pixel-shift",
+        "kind": "operator",
+        "description": "Measure pixel shift for every isolated key/mouse press",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "controls": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "W",
+                  "S",
+                  "A",
+                  "D",
+                  "MOUSE_X_POS",
+                  "MOUSE_X_NEG",
+                  "MOUSE_Y_POS",
+                  "MOUSE_Y_NEG"
+                ]
+              },
+              "description": "Subset of W/S/A/D/MOUSE_X_POS/.../MOUSE_Y_NEG to measure; the default is all eight controls."
+            },
+            "boundary": {
+              "type": "string",
+              "enum": [
+                "exclude",
+                "error",
+                "assume-inactive"
+              ],
+              "default": "exclude",
+              "description": "How to handle a targeted press clipped by a segment edge. 'exclude' is conservative; 'error' requires context; 'assume-inactive' treats outside frames as inactive."
+            }
+          },
+          "additionalProperties": false
+        },
+        "capabilities": {},
+        "extra": "pixel-shift",
+        "install_hint": "pip install \"kuration-sdk[pixel-shift]\"",
+        "package": "kuration-sdk",
+        "version": "1",
+        "schema_version": 1,
+        "documentation": "https://aintropy-ai.github.io/kuration-sdk/pixel-shift/",
+        "stability": "experimental",
+        "module": "kuration.gameplay.pixel_shift.pixel_shift_operator",
+        "fingerprint": "d0a64f3d4dee09e43e5152b5ddaa8eb4f3780d56bb3ed5479f93abb9c1b81d3a"
+      },
+      "expansion": [
+        {
+          "op": "transform",
+          "args": [
+            "aintropy/pixel-shift"
+          ],
+          "kwargs": {
+            "device": "cpu",
+            "boundary": "exclude",
+            "controls": [
+              "W",
+              "S"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "op": "measure",
+      "args": [
+        "press_rate",
+        "rate"
+      ],
+      "kwargs": {
+        "of": "pressed"
+      }
+    },
+    {
+      "op": "filter",
+      "args": [
+        "press_rate",
+        ">=",
+        0.125
+      ],
+      "kwargs": {}
+    },
+    {
+      "op": "options",
+      "args": [],
+      "kwargs": {
+        "mode": "strict",
+        "seed": 7
+      }
+    },
+    {
+      "op": "score",
+      "args": [
+        "aintropy/action-state-consistency"
+      ],
+      "kwargs": {
+        "out": "action_state_anomaly",
+        "baselines": {
+          "W": {
+            "1": {
+              "expected_sign": 1,
+              "min": 1.3112973868846893,
+              "max": 2.360335296392441
+            }
+          },
+          "S": {
+            "1": {
+              "expected_sign": -1,
+              "min": 1.2074296027421951,
+              "max": 2.1733732849359515
+            }
+          }
+        },
+        "controls": [
+          "W",
+          "S"
+        ]
+      }
+    },
+    {
+      "op": "filter",
+      "args": [
+        "action_state_anomaly",
+        "<=",
+        0.0
+      ],
+      "kwargs": {}
+    },
+    {
+      "op": "filter",
+      "args": [
+        "s_shift_measured",
+        ">=",
+        1.0
+      ],
+      "kwargs": {}
+    },
+    {
+      "op": "bin",
+      "args": [
+        "s_shift_mean"
+      ],
+      "kwargs": {
+        "bins": 2
+      }
+    },
+    {
+      "op": "split",
+      "args": [],
+      "kwargs": {
+        "test": 0.3333333333333333
+      }
+    },
+    {
+      "op": "sample",
+      "args": [
+        "equal"
+      ],
+      "kwargs": {
+        "n": 3
+      }
+    }
+  ],
+  "errors": [],
+  "output_request": {
+    "op": "output",
+    "args": [
+      "keep-s-d7ba30388a74"
+    ],
+    "kwargs": {
+      "preset": null,
+      "spec": {
+        "shard_length": 8,
+        "short_policy": "keep",
+        "container": "npz",
+        "presence_mask": true,
+        "modalities": {
+          "frames": {
+            "dtype": "uint8",
+            "shape": [
+              48,
+              64,
+              3
+            ],
+            "source": "media:frame"
+          },
+          "actions": {
+            "dtype": "float64",
+            "shape": [
+              51
+            ],
+            "source": "field:action"
+          }
+        }
+      },
+      "categorical": null,
+      "force": false
+    }
+  },
+  "mode": {
+    "name": "strict",
+    "resolved": {
+      "workers": 1,
+      "on_error": "raise",
+      "seed": 7,
+      "streaming": false,
+      "resume": false,
+      "sample_hz": null,
+      "progress": null,
+      "executor": "local",
+      "memory_budget": null,
+      "batch_size": 1024,
+      "checkpoint_dir": null,
+      "spill_dir": null,
+      "approximation": "exact",
+      "max_in_flight": 2,
+      "mode": "strict",
+      "overrides": [
+        "seed"
+      ]
+    }
+  },
+  "warnings": [
+    {
+      "code": "unbounded-operator",
+      "message": "scorer:aintropy/action-state-consistency has no bounded runtime yet",
+      "hint": "For a bounded exact run, prefer top-k or uniform-bins without global filters/scorers; otherwise size the candidate pool for memory."
+    }
+  ]
+}

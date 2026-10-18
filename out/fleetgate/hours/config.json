@@ -1,0 +1,1664 @@
+{
+  "artifact_format_version": "1.3",
+  "schema": {
+    "name": "fleet-shift",
+    "fields": {
+      "camera_position": {
+        "kind": "vector",
+        "dims": [
+          "x",
+          "y",
+          "z"
+        ],
+        "semantics": "position"
+      },
+      "camera_z_axis": {
+        "kind": "vector",
+        "dims": [
+          "x",
+          "y",
+          "z"
+        ]
+      },
+      "tracking_confidence": {
+        "kind": "scalar"
+      },
+      "contact": {
+        "kind": "scalar"
+      },
+      "command": {
+        "kind": "vector",
+        "dims": [
+          "vx",
+          "vy",
+          "wz"
+        ]
+      }
+    },
+    "entity_axis": "robot",
+    "sample_hz": 10.0
+  },
+  "strategy": {
+    "name": "pipeline",
+    "define": {
+      "contact_rate": {
+        "source": "robot.contact",
+        "reduce": "rate"
+      }
+    },
+    "feature_space": null,
+    "filters": [],
+    "tags": null,
+    "scorers": null,
+    "binning": {
+      "axes": [
+        {
+          "metric": "slam_path_length",
+          "bins": 3
+        }
+      ]
+    },
+    "selection": {
+      "method": "uniform-bins",
+      "weights": {},
+      "normalize": "quantile",
+      "target": "flat",
+      "tag_coverage": null,
+      "group_cap": null,
+      "predicates": [
+        {
+          "metric": "slam_translation_jump_fraction",
+          "op": "<=",
+          "value": 0.0
+        },
+        {
+          "metric": "contact_rate",
+          "op": ">=",
+          "value": 0.5
+        }
+      ]
+    }
+  },
+  "seed": 7,
+  "started": "2026-10-18T16:10:29.035931+00:00",
+  "ended": "2026-10-18T16:10:32.667991+00:00",
+  "results": {
+    "shards": 5,
+    "tracks_admitted": 5,
+    "tracks_total": 4,
+    "segments_total": 32,
+    "sources_skipped": 0,
+    "n_train_sources": 3,
+    "n_test_sources": 1,
+    "budget": {
+      "requested_seconds": {
+        "train": 12.8,
+        "test": 3.2
+      },
+      "admitted_seconds": {
+        "train": 12.8,
+        "test": 3.2
+      },
+      "underfill_seconds": {
+        "train": 0.0,
+        "test": 0.0
+      },
+      "candidate_seconds": {
+        "train": 12.8,
+        "test": 6.4
+      },
+      "items_total": 32,
+      "items_admitted": 5,
+      "items_rejected_nonfinite": 26,
+      "items_rejected_group_cap": 0,
+      "review": {
+        "decision_counts": {
+          "budget-filled": 1,
+          "nonfinite-priority": 26,
+          "priority": 5
+        },
+        "priority": {
+          "admitted": {
+            "min": -8.0,
+            "max": -1.0,
+            "count": 5,
+            "mean": -4.6
+          },
+          "rejected": {
+            "min": -6.0,
+            "max": -6.0,
+            "count": 1,
+            "mean": -6.0
+          }
+        },
+        "examples": {
+          "admitted": [
+            {
+              "id": [
+                "picker",
+                0,
+                6
+              ],
+              "source": "picker",
+              "split": "test",
+              "priority": -1.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                4
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": -3.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                5
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": -4.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 160,
+              "end": 192,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                6
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": -7.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                6
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": -8.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "priority"
+            }
+          ],
+          "rejected": [
+            {
+              "id": [
+                "picker",
+                0,
+                4
+              ],
+              "source": "picker",
+              "split": "test",
+              "priority": -6.0,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "budget-filled"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                0
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 0,
+              "end": 32,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                1
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 32,
+              "end": 64,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                2
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 64,
+              "end": 96,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                3
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 96,
+              "end": 128,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                4
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                6
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 192,
+              "end": 224,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "aisle",
+                0,
+                7
+              ],
+              "source": "aisle",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 224,
+              "end": 256,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                0
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 0,
+              "end": 32,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                1
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 32,
+              "end": 64,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                2
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 64,
+              "end": 96,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                3
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 96,
+              "end": 128,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                5
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 160,
+              "end": 192,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "docker",
+                0,
+                7
+              ],
+              "source": "docker",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 224,
+              "end": 256,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                0
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 0,
+              "end": 32,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                1
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 32,
+              "end": 64,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                2
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 64,
+              "end": 96,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                3
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 96,
+              "end": 128,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                4
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 128,
+              "end": 160,
+              "decision": "nonfinite-priority"
+            },
+            {
+              "id": [
+                "glitch",
+                0,
+                5
+              ],
+              "source": "glitch",
+              "split": "train",
+              "priority": null,
+              "seconds": 3.2,
+              "group": null,
+              "tags": [],
+              "start": 160,
+              "end": 192,
+              "decision": "nonfinite-priority"
+            }
+          ]
+        }
+      },
+      "emitted_seconds": {
+        "train": 12.8,
+        "test": 3.2
+      },
+      "emission_loss_seconds": {
+        "train": 0.0,
+        "test": 0.0
+      },
+      "emitted_underfill_seconds": {
+        "train": 0.0,
+        "test": 0.0
+      }
+    }
+  },
+  "plugins": [],
+  "output": {
+    "shard_length": 32,
+    "short_policy": "keep",
+    "container": "npz",
+    "presence_mask": true,
+    "modalities": {
+      "camera_position": {
+        "dtype": "float32",
+        "shape": [
+          3
+        ],
+        "source": "field:camera_position"
+      },
+      "camera_z_axis": {
+        "dtype": "float32",
+        "shape": [
+          3
+        ],
+        "source": "field:camera_z_axis"
+      },
+      "tracking_confidence": {
+        "dtype": "float32",
+        "shape": [],
+        "source": "field:tracking_confidence"
+      },
+      "contact": {
+        "dtype": "float32",
+        "shape": [],
+        "source": "field:contact"
+      },
+      "command": {
+        "dtype": "float32",
+        "shape": [
+          3
+        ],
+        "source": "field:command"
+      }
+    }
+  },
+  "provenance": {
+    "fingerprint": "54f3d078621f3fa4ce9ad6b7623eb039fd76b400a5cf2b17c389c94b1600b993",
+    "payload": {
+      "adapter": {
+        "code_sha256": "959c6c714e52d44c7bfb3e374fb1e02d56cc106f2913a10e8bc57e786607ddfa",
+        "state_sha256": "6c2e300c9f8013233d1a5111c5966857886cbb799da4d78f2eef772cd1daf1c3",
+        "type": "kuration.core._pipeline_support.TickAdapter"
+      },
+      "artifact_format_version": "1.3",
+      "budgets": {
+        "test_hours": 0.0008888888888888889,
+        "train_hours": 0.0035555555555555557
+      },
+      "clip_aggregate": "max",
+      "encoder": {
+        "code_sha256": "c19c6baec270c4888e89417e81e725f5ab1241706470e2b5dbac4c004d716630",
+        "state_sha256": "ebc9164917b58481aea37d400c969b8001c734b7034b1f2e69dc378af8381791",
+        "type": "kuration.core.output.base.PassthroughEncoder"
+      },
+      "extensions": [
+        {
+          "capabilities": {
+            "streaming": true
+          },
+          "description": "",
+          "fingerprint": "30f80f5e08871f453e38f23df5822d4805389239fb901f22ae9c1d1e66f4d7cc",
+          "kind": "method",
+          "module": "kuration.core.strategy",
+          "name": "uniform-bins",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "stable"
+        },
+        {
+          "capabilities": {
+            "remote_paths": true,
+            "streaming": true
+          },
+          "description": "",
+          "fingerprint": "57014925a2e9687901fd4a3f0cf144a94140176652ab6488bae701a9278957ba",
+          "kind": "container",
+          "module": "kuration.core.output.containers",
+          "name": "npz",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "stable"
+        },
+        {
+          "capabilities": {},
+          "description": "Measure translation and camera-turn motion in SLAM trajectory windows",
+          "extra": "slam",
+          "fingerprint": "74640fe0da4041585e1639032d082d1ba8c9f73b49db588bef0c425a41b9772a",
+          "install_hint": "pip install \"kuration-sdk[slam]\"",
+          "kind": "transform",
+          "module": "kuration.gameplay.slam.motion",
+          "name": "aintropy/slam-motion",
+          "package": "kuration-sdk",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {},
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "experimental",
+          "version": "1"
+        },
+        {
+          "capabilities": {},
+          "description": "Flag tracking gaps, pose jumps, and unstable trajectory scale",
+          "extra": "slam",
+          "fingerprint": "cacdfdc773b058f72265e00129bfd9f3848e22724f96102ea6b54a2ddc982f9c",
+          "install_hint": "pip install \"kuration-sdk[slam]\"",
+          "kind": "transform",
+          "module": "kuration.gameplay.slam.quality",
+          "name": "aintropy/slam-quality",
+          "package": "kuration-sdk",
+          "parameters": {
+            "additionalProperties": false,
+            "properties": {
+              "max_translation_step": {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              "max_turn_degrees": {
+                "exclusiveMinimum": 0,
+                "maximum": 180,
+                "type": "number"
+              },
+              "min_tracking_confidence": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "translation_mad_multiplier": {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              },
+              "translation_ratio": {
+                "exclusiveMinimum": 0,
+                "type": "number"
+              }
+            },
+            "type": "object"
+          },
+          "schema_version": 1,
+          "stability": "experimental",
+          "version": "1"
+        }
+      ],
+      "group_of": null,
+      "output": {
+        "container": "npz",
+        "modalities": {
+          "camera_position": {
+            "dtype": "float32",
+            "shape": [
+              3
+            ],
+            "source": "field:camera_position"
+          },
+          "camera_z_axis": {
+            "dtype": "float32",
+            "shape": [
+              3
+            ],
+            "source": "field:camera_z_axis"
+          },
+          "command": {
+            "dtype": "float32",
+            "shape": [
+              3
+            ],
+            "source": "field:command"
+          },
+          "contact": {
+            "dtype": "float32",
+            "shape": [],
+            "source": "field:contact"
+          },
+          "tracking_confidence": {
+            "dtype": "float32",
+            "shape": [],
+            "source": "field:tracking_confidence"
+          }
+        },
+        "presence_mask": true,
+        "shard_length": 32,
+        "short_policy": "keep"
+      },
+      "plugins": [],
+      "sample_hz": 10.0,
+      "schema": {
+        "entity_axis": "robot",
+        "fields": {
+          "camera_position": {
+            "dims": [
+              "x",
+              "y",
+              "z"
+            ],
+            "kind": "vector",
+            "semantics": "position"
+          },
+          "camera_z_axis": {
+            "dims": [
+              "x",
+              "y",
+              "z"
+            ],
+            "kind": "vector"
+          },
+          "command": {
+            "dims": [
+              "vx",
+              "vy",
+              "wz"
+            ],
+            "kind": "vector"
+          },
+          "contact": {
+            "kind": "scalar"
+          },
+          "tracking_confidence": {
+            "kind": "scalar"
+          }
+        },
+        "name": "fleet-shift",
+        "sample_hz": 10.0
+      },
+      "sdk_version": "unknown",
+      "seed": 7,
+      "segmenter": {
+        "stride": 32,
+        "window": 32
+      },
+      "sources": [
+        {
+          "fingerprint": "abeef7e3d78f7f76f3a78dd93fde60f91c2a2a57d966190080937cf9d4678bd1",
+          "source": "aisle",
+          "source_id_sha256": "fb9d4d9b1dbc2be29ed24ffa1c60cd236a5ad5ae68b662fffd0ca1b466c4d938",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": "f12836386f83ea660ba2f7e24508f3a2e23d636b7451c11f61b5a8e4bc37cd1a",
+          "source": "docker",
+          "source_id_sha256": "cab7cd9e98b3f9608a5d277dfaa8dae5be646fff8fce9fcece6f0dadea12a7c9",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": "a4ad98e3bb71dfc3a6a9c20cdf0375d19b0a02c22739b2dc6dc1286ff2433d4b",
+          "source": "glitch",
+          "source_id_sha256": "3cda9bf4be7ccc9064a1db23189f4d6b9ddfd705e2d2320ae8b53a1c3105ff1e",
+          "strength": "adapter"
+        },
+        {
+          "fingerprint": "4f141c7f58e0edd7136332c4520e0505f031cedd04a2600d33b083802affb9c3",
+          "source": "picker",
+          "source_id_sha256": "ae28dfa607653da30861d00f75502b56a0ddb2c0f629fa4d6c9541df761ad1d5",
+          "strength": "adapter"
+        }
+      ],
+      "span_len": 32,
+      "strategy": {
+        "binning": {
+          "axes": [
+            {
+              "bins": 3,
+              "metric": "slam_path_length"
+            }
+          ]
+        },
+        "define": {
+          "contact_rate": {
+            "reduce": "rate",
+            "source": "robot.contact"
+          }
+        },
+        "feature_space": null,
+        "filters": [],
+        "name": "pipeline",
+        "scorers": null,
+        "selection": {
+          "group_cap": null,
+          "method": "uniform-bins",
+          "normalize": "quantile",
+          "predicates": [
+            {
+              "metric": "slam_translation_jump_fraction",
+              "op": "<=",
+              "value": 0.0
+            },
+            {
+              "metric": "contact_rate",
+              "op": ">=",
+              "value": 0.5
+            }
+          ],
+          "tag_coverage": null,
+          "target": "flat",
+          "weights": {}
+        },
+        "tags": null
+      },
+      "tags_of": null,
+      "transforms": [
+        {
+          "batch_size": 128,
+          "device": "cpu",
+          "implementation": "aintropy/slam-motion",
+          "input_roles": {
+            "field:camera_position": "field:camera_position",
+            "field:camera_z_axis": "field:camera_z_axis"
+          },
+          "inputs": [
+            "field:camera_position",
+            "field:camera_z_axis"
+          ],
+          "lookahead": 0,
+          "lookahead_tokens": {},
+          "lookbehind": 0,
+          "lookbehind_tokens": {},
+          "name": "aintropy/slam-motion",
+          "outputs": [
+            "slam_path_length",
+            "slam_displacement",
+            "slam_motion_efficiency",
+            "slam_mean_step",
+            "slam_max_step",
+            "slam_turn_degrees",
+            "slam_mean_turn_degrees",
+            "slam_max_turn_degrees",
+            "slam_spatial_extent"
+          ],
+          "ownership": null,
+          "params": {},
+          "resources": {
+            "num_gpus": 0,
+            "preferred_batch_size": 128
+          }
+        },
+        {
+          "batch_size": 128,
+          "device": "cpu",
+          "implementation": "aintropy/slam-quality",
+          "input_roles": {
+            "field:camera_position": "field:camera_position",
+            "field:camera_z_axis": "field:camera_z_axis",
+            "field:tracking_confidence": "field:tracking_confidence"
+          },
+          "inputs": [
+            "field:camera_position",
+            "field:camera_z_axis",
+            "field:tracking_confidence"
+          ],
+          "lookahead": 0,
+          "lookahead_tokens": {},
+          "lookbehind": 0,
+          "lookbehind_tokens": {},
+          "name": "aintropy/slam-quality",
+          "outputs": [
+            "slam_tracking_confidence_mean",
+            "slam_tracking_gap_fraction",
+            "slam_translation_jump_fraction",
+            "slam_rotation_jump_fraction",
+            "slam_step_scale_drift",
+            "slam_quality_score"
+          ],
+          "ownership": null,
+          "params": {},
+          "resources": {
+            "num_gpus": 0,
+            "preferred_batch_size": 128
+          }
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "execution": {
+    "bounded": true,
+    "physical_plan": {
+      "version": 1,
+      "backend": "local",
+      "mode": "bounded-hours-uniform-bins",
+      "resolved_transforms": [
+        {
+          "name": "aintropy/slam-motion",
+          "implementation": "aintropy/slam-motion",
+          "outputs": [
+            "slam_path_length",
+            "slam_displacement",
+            "slam_motion_efficiency",
+            "slam_mean_step",
+            "slam_max_step",
+            "slam_turn_degrees",
+            "slam_mean_turn_degrees",
+            "slam_max_turn_degrees",
+            "slam_spatial_extent"
+          ],
+          "params": {},
+          "inputs": [
+            "field:camera_position",
+            "field:camera_z_axis"
+          ],
+          "input_roles": {
+            "field:camera_position": "field:camera_position",
+            "field:camera_z_axis": "field:camera_z_axis"
+          },
+          "batch_size": 128,
+          "device": "cpu",
+          "resources": {
+            "num_gpus": 0,
+            "preferred_batch_size": 128
+          },
+          "lookbehind": 0,
+          "lookahead": 0,
+          "lookbehind_tokens": {},
+          "lookahead_tokens": {},
+          "ownership": null
+        },
+        {
+          "name": "aintropy/slam-quality",
+          "implementation": "aintropy/slam-quality",
+          "outputs": [
+            "slam_tracking_confidence_mean",
+            "slam_tracking_gap_fraction",
+            "slam_translation_jump_fraction",
+            "slam_rotation_jump_fraction",
+            "slam_step_scale_drift",
+            "slam_quality_score"
+          ],
+          "params": {},
+          "inputs": [
+            "field:camera_position",
+            "field:camera_z_axis",
+            "field:tracking_confidence"
+          ],
+          "input_roles": {
+            "field:camera_position": "field:camera_position",
+            "field:camera_z_axis": "field:camera_z_axis",
+            "field:tracking_confidence": "field:tracking_confidence"
+          },
+          "batch_size": 128,
+          "device": "cpu",
+          "resources": {
+            "num_gpus": 0,
+            "preferred_batch_size": 128
+          },
+          "lookbehind": 0,
+          "lookahead": 0,
+          "lookbehind_tokens": {},
+          "lookahead_tokens": {},
+          "ownership": null
+        }
+      ],
+      "memory_budget": null,
+      "batch_size": 1024,
+      "max_in_flight": 2,
+      "stages": [
+        {
+          "id": "stage000",
+          "mode": "pipeline_parallel",
+          "operators": [
+            "read",
+            "segment",
+            "metrics",
+            "predicates",
+            "transforms"
+          ],
+          "checkpoint": "partition-reusable"
+        },
+        {
+          "id": "stage001",
+          "mode": "data_parallel",
+          "operators": [
+            "normalize",
+            "top-k-priority",
+            "span-fill"
+          ],
+          "checkpoint": "reducer-state",
+          "passes": 2
+        },
+        {
+          "id": "stage002",
+          "mode": "pipeline_parallel",
+          "operators": [
+            "output"
+          ],
+          "checkpoint": "partition-reusable"
+        }
+      ],
+      "spill_path": null,
+      "spill_configured": true
+    },
+    "checkpoint": {
+      "stage_id": "stage000",
+      "identity": {
+        "logical_plan_hash": "54f3d078621f3fa4ce9ad6b7623eb039fd76b400a5cf2b17c389c94b1600b993",
+        "physical_plan_hash": "9b386666405da435e8a1a0e41c9b2a2581eb53f602673d57373df63e73f7a827",
+        "input_fingerprints": [
+          {
+            "fingerprint": "abeef7e3d78f7f76f3a78dd93fde60f91c2a2a57d966190080937cf9d4678bd1",
+            "source": "aisle",
+            "source_id_sha256": "fb9d4d9b1dbc2be29ed24ffa1c60cd236a5ad5ae68b662fffd0ca1b466c4d938",
+            "strength": "adapter"
+          },
+          {
+            "fingerprint": "f12836386f83ea660ba2f7e24508f3a2e23d636b7451c11f61b5a8e4bc37cd1a",
+            "source": "docker",
+            "source_id_sha256": "cab7cd9e98b3f9608a5d277dfaa8dae5be646fff8fce9fcece6f0dadea12a7c9",
+            "strength": "adapter"
+          },
+          {
+            "fingerprint": "a4ad98e3bb71dfc3a6a9c20cdf0375d19b0a02c22739b2dc6dc1286ff2433d4b",
+            "source": "glitch",
+            "source_id_sha256": "3cda9bf4be7ccc9064a1db23189f4d6b9ddfd705e2d2320ae8b53a1c3105ff1e",
+            "strength": "adapter"
+          },
+          {
+            "fingerprint": "4f141c7f58e0edd7136332c4520e0505f031cedd04a2600d33b083802affb9c3",
+            "source": "picker",
+            "source_id_sha256": "ae28dfa607653da30861d00f75502b56a0ddb2c0f629fa4d6c9541df761ad1d5",
+            "strength": "adapter"
+          }
+        ],
+        "schema": {
+          "name": "fleet-shift",
+          "fields": {
+            "camera_position": {
+              "kind": "vector",
+              "dims": [
+                "x",
+                "y",
+                "z"
+              ],
+              "semantics": "position"
+            },
+            "camera_z_axis": {
+              "kind": "vector",
+              "dims": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "tracking_confidence": {
+              "kind": "scalar"
+            },
+            "contact": {
+              "kind": "scalar"
+            },
+            "command": {
+              "kind": "vector",
+              "dims": [
+                "vx",
+                "vy",
+                "wz"
+              ]
+            }
+          },
+          "entity_axis": "robot",
+          "sample_hz": 10.0
+        },
+        "components": [
+          {
+            "name": "aintropy/slam-motion",
+            "kind": "transform",
+            "description": "Measure translation and camera-turn motion in SLAM trajectory windows",
+            "parameters": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": false
+            },
+            "capabilities": {},
+            "extra": "slam",
+            "install_hint": "pip install \"kuration-sdk[slam]\"",
+            "package": "kuration-sdk",
+            "version": "1",
+            "schema_version": 1,
+            "stability": "experimental",
+            "module": "kuration.gameplay.slam.motion",
+            "fingerprint": "74640fe0da4041585e1639032d082d1ba8c9f73b49db588bef0c425a41b9772a"
+          },
+          {
+            "name": "aintropy/slam-quality",
+            "kind": "transform",
+            "description": "Flag tracking gaps, pose jumps, and unstable trajectory scale",
+            "parameters": {
+              "type": "object",
+              "properties": {
+                "min_tracking_confidence": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                },
+                "translation_ratio": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "translation_mad_multiplier": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "max_translation_step": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "max_turn_degrees": {
+                  "type": "number",
+                  "exclusiveMinimum": 0,
+                  "maximum": 180
+                }
+              },
+              "additionalProperties": false
+            },
+            "capabilities": {},
+            "extra": "slam",
+            "install_hint": "pip install \"kuration-sdk[slam]\"",
+            "package": "kuration-sdk",
+            "version": "1",
+            "schema_version": 1,
+            "stability": "experimental",
+            "module": "kuration.gameplay.slam.quality",
+            "fingerprint": "cacdfdc773b058f72265e00129bfd9f3848e22724f96102ea6b54a2ddc982f9c"
+          }
+        ],
+        "parameters": {
+          "seed": 7
+        }
+      },
+      "identity_fingerprint": "e59306149157cba49254d94c7a2ac9cede61ecbb9adc64d8d37aeceba5fc8067",
+      "partitions": [
+        {
+          "partition_id_sha256": "40be3af17aaac1712f99ebdca3ea99112b7f77a9379f7ca7cc45e8f994f453b5",
+          "identity": "e59306149157cba49254d94c7a2ac9cede61ecbb9adc64d8d37aeceba5fc8067",
+          "rows": 8,
+          "sha256": "4dca800ed48b322bd120b8160154c85b25252a3bbb0748957487cc9585d94faf",
+          "columns": [
+            "end_idx",
+            "end_time",
+            "feature:contact_rate",
+            "feature:slam_displacement",
+            "feature:slam_max_step",
+            "feature:slam_max_turn_degrees",
+            "feature:slam_mean_step",
+            "feature:slam_mean_turn_degrees",
+            "feature:slam_motion_efficiency",
+            "feature:slam_path_length",
+            "feature:slam_quality_score",
+            "feature:slam_rotation_jump_fraction",
+            "feature:slam_spatial_extent",
+            "feature:slam_step_scale_drift",
+            "feature:slam_tracking_confidence_mean",
+            "feature:slam_tracking_gap_fraction",
+            "feature:slam_translation_jump_fraction",
+            "feature:slam_turn_degrees",
+            "group",
+            "source_id",
+            "start_idx",
+            "start_time",
+            "tags"
+          ],
+          "size_bytes": 6098
+        },
+        {
+          "partition_id_sha256": "5891ba66e5495dc9ad56fa0e599cf7db9b73eef24b779871bce1864ef19a9fde",
+          "identity": "e59306149157cba49254d94c7a2ac9cede61ecbb9adc64d8d37aeceba5fc8067",
+          "rows": 8,
+          "sha256": "2d7104753a547aa4375becd170603d25a5798983948e932b09341bb0fe390632",
+          "columns": [
+            "end_idx",
+            "end_time",
+            "feature:contact_rate",
+            "feature:slam_displacement",
+            "feature:slam_max_step",
+            "feature:slam_max_turn_degrees",
+            "feature:slam_mean_step",
+            "feature:slam_mean_turn_degrees",
+            "feature:slam_motion_efficiency",
+            "feature:slam_path_length",
+            "feature:slam_quality_score",
+            "feature:slam_rotation_jump_fraction",
+            "feature:slam_spatial_extent",
+            "feature:slam_step_scale_drift",
+            "feature:slam_tracking_confidence_mean",
+            "feature:slam_tracking_gap_fraction",
+            "feature:slam_translation_jump_fraction",
+            "feature:slam_turn_degrees",
+            "group",
+            "source_id",
+            "start_idx",
+            "start_time",
+            "tags"
+          ],
+          "size_bytes": 6106
+        },
+        {
+          "partition_id_sha256": "713cf13dd0a10d8b8826783e5ef25463eb7d509ffaf61a8999456d862057895f",
+          "identity": "e59306149157cba49254d94c7a2ac9cede61ecbb9adc64d8d37aeceba5fc8067",
+          "rows": 8,
+          "sha256": "1c7a284281a7d5b5b7fac0523ac933b038158bc3aea02b069453a4eb07bd8a7b",
+          "columns": [
+            "end_idx",
+            "end_time",
+            "feature:contact_rate",
+            "feature:slam_displacement",
+            "feature:slam_max_step",
+            "feature:slam_max_turn_degrees",
+            "feature:slam_mean_step",
+            "feature:slam_mean_turn_degrees",
+            "feature:slam_motion_efficiency",
+            "feature:slam_path_length",
+            "feature:slam_quality_score",
+            "feature:slam_rotation_jump_fraction",
+            "feature:slam_spatial_extent",
+            "feature:slam_step_scale_drift",
+            "feature:slam_tracking_confidence_mean",
+            "feature:slam_tracking_gap_fraction",
+            "feature:slam_translation_jump_fraction",
+            "feature:slam_turn_degrees",
+            "group",
+            "source_id",
+            "start_idx",
+            "start_time",
+            "tags"
+          ],
+          "size_bytes": 6106
+        },
+        {
+          "partition_id_sha256": "a17dec967c7181b3e94af92d17f6588f945f38eedae0e06b0e8a9348e4fe78b6",
+          "identity": "e59306149157cba49254d94c7a2ac9cede61ecbb9adc64d8d37aeceba5fc8067",
+          "rows": 8,
+          "sha256": "084f743247d03cc7890918950a39f0a5a2c22922e593a6ef6fb8248eca88223d",
+          "columns": [
+            "end_idx",
+            "end_time",
+            "feature:contact_rate",
+            "feature:slam_displacement",
+            "feature:slam_max_step",
+            "feature:slam_max_turn_degrees",
+            "feature:slam_mean_step",
+            "feature:slam_mean_turn_degrees",
+            "feature:slam_motion_efficiency",
+            "feature:slam_path_length",
+            "feature:slam_quality_score",
+            "feature:slam_rotation_jump_fraction",
+            "feature:slam_spatial_extent",
+            "feature:slam_step_scale_drift",
+            "feature:slam_tracking_confidence_mean",
+            "feature:slam_tracking_gap_fraction",
+            "feature:slam_translation_jump_fraction",
+            "feature:slam_turn_degrees",
+            "group",
+            "source_id",
+            "start_idx",
+            "start_time",
+            "tags"
+          ],
+          "size_bytes": 6106
+        }
+      ],
+      "partition_count": 4,
+      "rows": 32,
+      "commit": true
+    },
+    "telemetry": {
+      "partitions": 4,
+      "checkpoint_hits": 0,
+      "checkpoint_misses": 4,
+      "checkpoint_bytes": 24416,
+      "candidate_rows": 32,
+      "output_rows": 32,
+      "batch_size": 1024,
+      "max_in_flight": 2,
+      "requested_batch_size": 1024,
+      "requested_max_in_flight": 2,
+      "memory_budget": null,
+      "estimated_peak_live_bytes": null,
+      "largest_window_bytes": null,
+      "declared_transform_memory": 0
+    }
+  },
+  "pipeline": [
+    {
+      "op": "input",
+      "args": [
+        "<in-memory dict>"
+      ],
+      "kwargs": {
+        "schema": {
+          "name": "fleet-shift",
+          "fields": {
+            "camera_position": {
+              "kind": "vector",
+              "dims": [
+                "x",
+                "y",
+                "z"
+              ],
+              "semantics": "position"
+            },
+            "camera_z_axis": {
+              "kind": "vector",
+              "dims": [
+                "x",
+                "y",
+                "z"
+              ]
+            },
+            "tracking_confidence": {
+              "kind": "scalar"
+            },
+            "contact": {
+              "kind": "scalar"
+            },
+            "command": {
+              "kind": "vector",
+              "dims": [
+                "vx",
+                "vy",
+                "wz"
+              ]
+            }
+          },
+          "entity_axis": "robot",
+          "sample_hz": 10.0
+        },
+        "sample": 200
+      }
+    },
+    {
+      "op": "window",
+      "args": [
+        32
+      ],
+      "kwargs": {
+        "stride": 32,
+        "unit": "steps"
+      }
+    },
+    {
+      "op": "measure",
+      "args": [
+        "contact_rate",
+        "rate"
+      ],
+      "kwargs": {
+        "of": "contact"
+      }
+    },
+    {
+      "op": "apply",
+      "args": [
+        "aintropy/slam-motion-diversity"
+      ],
+      "kwargs": {
+        "axis": "slam_path_length",
+        "bins": 3
+      },
+      "component": {
+        "name": "aintropy/slam-motion-diversity",
+        "kind": "operator",
+        "description": "Add SLAM motion features and quantile-bin a selected diversity axis",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "axis": {
+              "type": "string",
+              "enum": [
+                "slam_path_length",
+                "slam_displacement",
+                "slam_motion_efficiency",
+                "slam_mean_step",
+                "slam_max_step",
+                "slam_turn_degrees",
+                "slam_mean_turn_degrees",
+                "slam_max_turn_degrees",
+                "slam_spatial_extent"
+              ]
+            },
+            "bins": {
+              "type": "integer",
+              "minimum": 2
+            }
+          },
+          "additionalProperties": false
+        },
+        "capabilities": {},
+        "extra": "slam",
+        "install_hint": "pip install \"kuration-sdk[slam]\"",
+        "package": "kuration-sdk",
+        "version": "1",
+        "schema_version": 1,
+        "stability": "experimental",
+        "module": "kuration.gameplay.slam.motion",
+        "fingerprint": "93e50ca62659fdc04b5e830c504d41d744df4b87f41bcab9bab5ffb01c8d2b08"
+      },
+      "expansion": [
+        {
+          "op": "transform",
+          "args": [
+            "aintropy/slam-motion"
+          ],
+          "kwargs": {
+            "device": "cpu"
+          }
+        },
+        {
+          "op": "bin",
+          "args": [
+            "slam_path_length"
+          ],
+          "kwargs": {
+            "bins": 3
+          }
+        }
+      ]
+    },
+    {
+      "op": "apply",
+      "args": [
+        "aintropy/slam-quality"
+      ],
+      "kwargs": {},
+      "component": {
+        "name": "aintropy/slam-quality",
+        "kind": "operator",
+        "description": "Add SLAM reconstruction-quality signals and optionally filter windows",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "min_tracking_confidence": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "translation_ratio": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "translation_mad_multiplier": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max_translation_step": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "max_turn_degrees": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 180
+            },
+            "min_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          },
+          "additionalProperties": false
+        },
+        "capabilities": {},
+        "extra": "slam",
+        "install_hint": "pip install \"kuration-sdk[slam]\"",
+        "package": "kuration-sdk",
+        "version": "1",
+        "schema_version": 1,
+        "stability": "experimental",
+        "module": "kuration.gameplay.slam.quality",
+        "fingerprint": "0e8157c50b643232909e636bd213457b211e6ab0288bb4f5a11536994defa658"
+      },
+      "expansion": [
+        {
+          "op": "transform",
+          "args": [
+            "aintropy/slam-quality"
+          ],
+          "kwargs": {
+            "device": "cpu"
+          }
+        }
+      ]
+    },
+    {
+      "op": "filter",
+      "args": [
+        "slam_translation_jump_fraction",
+        "<=",
+        0.0
+      ],
+      "kwargs": {}
+    },
+    {
+      "op": "options",
+      "args": [],
+      "kwargs": {
+        "mode": "strict",
+        "seed": 7
+      }
+    },
+    {
+      "op": "filter",
+      "args": [
+        "contact_rate",
+        ">=",
+        0.5
+      ],
+      "kwargs": {}
+    },
+    {
+      "op": "split",
+      "args": [],
+      "kwargs": {
+        "test": 0.25
+      }
+    },
+    {
+      "op": "sample",
+      "args": [
+        "equal"
+      ],
+      "kwargs": {
+        "hours": 0.0035555555555555557,
+        "test_hours": 0.0008888888888888889
+      }
+    }
+  ],
+  "output_request": {
+    "op": "output",
+    "args": [
+      "hours-8c48ac211921"
+    ],
+    "kwargs": {
+      "preset": null,
+      "spec": {
+        "shard_length": 32,
+        "short_policy": "keep",
+        "container": "npz",
+        "presence_mask": true,
+        "modalities": {
+          "camera_position": {
+            "dtype": "float32",
+            "shape": [
+              3
+            ],
+            "source": "field:camera_position"
+          },
+          "camera_z_axis": {
+            "dtype": "float32",
+            "shape": [
+              3
+            ],
+            "source": "field:camera_z_axis"
+          },
+          "tracking_confidence": {
+            "dtype": "float32",
+            "shape": [],
+            "source": "field:tracking_confidence"
+          },
+          "contact": {
+            "dtype": "float32",
+            "shape": [],
+            "source": "field:contact"
+          },
+          "command": {
+            "dtype": "float32",
+            "shape": [
+              3
+            ],
+            "source": "field:command"
+          }
+        }
+      },
+      "categorical": "error",
+      "force": false
+    }
+  },
+  "mode": {
+    "name": "strict",
+    "resolved": {
+      "workers": 1,
+      "on_error": "raise",
+      "seed": 7,
+      "streaming": false,
+      "resume": false,
+      "sample_hz": null,
+      "progress": null,
+      "executor": "local",
+      "memory_budget": null,
+      "batch_size": 1024,
+      "checkpoint_dir": null,
+      "spill_dir": null,
+      "approximation": "exact",
+      "max_in_flight": 2,
+      "mode": "strict",
+      "overrides": [
+        "seed"
+      ]
+    }
+  },
+  "warnings": []
+}

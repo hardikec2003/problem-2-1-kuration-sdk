@@ -1,0 +1,175 @@
+{
+  "artifact_format_version": "1.3",
+  "commit_protocol": "sidecar-v1",
+  "count": 6,
+  "shards": [
+    {
+      "path": "test/accept-healthy-00_0_seg00000000_00000008_b7ffead676db_shard0000.npz",
+      "source_id": "accept-healthy-00",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "test",
+      "track_id": "accept-healthy-00_0_seg00000000_00000008_b7ffead676db",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "c037645c601ec2446d76e28cb898accf212a41763733fed56865204ee3d3abd3",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-01_0_seg00000000_00000008_151e9e9b5f9c_shard0000.npz",
+      "source_id": "accept-healthy-01",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-01_0_seg00000000_00000008_151e9e9b5f9c",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "a817e2e98d0fe8ca6f82c0a1c62a7154cffc33b6e3c1ec450c4d9803d95ed620",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-02_0_seg00000000_00000008_caecbdcf9005_shard0000.npz",
+      "source_id": "accept-healthy-02",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-02_0_seg00000000_00000008_caecbdcf9005",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "b83a3708a0a11549c9a4eebe845c34052a65f8ed62331757b9e61de35a3d3b43",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-03_0_seg00000000_00000008_d1698914eb81_shard0000.npz",
+      "source_id": "accept-healthy-03",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-03_0_seg00000000_00000008_d1698914eb81",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "114a3bcaab1038fc3485b869a4c4dbd4b26cc754a4aa9439b1b4a3c656415687",
+      "size_bytes": 78016
+    },
+    {
+      "path": "test/accept-healthy-04_0_seg00000000_00000008_0e44380687bc_shard0000.npz",
+      "source_id": "accept-healthy-04",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "test",
+      "track_id": "accept-healthy-04_0_seg00000000_00000008_0e44380687bc",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "4d620de4aec90625adf2bed7776fa667132966999fcea78d29472a2ef3784221",
+      "size_bytes": 78016
+    },
+    {
+      "path": "train/accept-healthy-05_0_seg00000000_00000008_5e76bedaddac_shard0000.npz",
+      "source_id": "accept-healthy-05",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "accept-healthy-05_0_seg00000000_00000008_5e76bedaddac",
+      "shard_index": 0,
+      "n_steps": 8,
+      "padded": false,
+      "shape": {
+        "frames": [
+          48,
+          64,
+          3
+        ],
+        "actions": [
+          51
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "frames": "uint8",
+        "actions": "float64",
+        "_present": "bool"
+      },
+      "sha256": "42620f9fe2eb92e50483daedd926d91126ea2b1e7359b9c312421d18e8caf298",
+      "size_bytes": 78016
+    }
+  ]
+}

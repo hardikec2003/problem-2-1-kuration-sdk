@@ -1,0 +1,15 @@
+# Evaluator runs these commands exactly, in order, from a fresh checkout.
+# kuration-sdk is the private release for this problem. It is not on PyPI.
+# Locally: export KURATION_SRC=/path/to/kuration-sdk/src
+
+setup_commands:
+  - "pip install -r requirements.txt"
+  - "python -c \"import kuration, kuration.gameplay, kuration.selection\""
+
+run_commands:
+  - "python src/main.py --out out/fleetgate"
+
+test_commands:
+  - "python src/main.py --out out/fleetgate"
+
+notes: "CPU only, under one minute. Synthetic fleet logs are generated in code; no download and no GPU. Requires the private kuration-sdk already installed (import kuration). NumPy is the only extra dependency. Writes out/fleetgate/scorecard.json and checksummed NPZ shards under out/fleetgate/hours."

@@ -1,0 +1,638 @@
+{
+  "artifact_format_version": "1.3",
+  "commit_protocol": "sidecar-v1",
+  "count": 5,
+  "shards": [
+    {
+      "path": "train/aisle_0_span00000160_00000192_cf62a0b2c109_shard0000.npz",
+      "source_id": "aisle",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "aisle_0_span00000160_00000192_cf62a0b2c109",
+      "shard_index": 0,
+      "n_steps": 32,
+      "padded": false,
+      "shape": {
+        "camera_position": [
+          3
+        ],
+        "camera_z_axis": [
+          3
+        ],
+        "tracking_confidence": [],
+        "contact": [],
+        "command": [
+          3
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "camera_position": "float32",
+        "camera_z_axis": "float32",
+        "tracking_confidence": "float32",
+        "contact": "float32",
+        "command": "float32",
+        "_present": "bool"
+      },
+      "sha256": "b9f3d0a89ba8884ef87dc2f5eefd0aa3bb3f817d567c04e3e4ca6d1536f91936",
+      "size_bytes": 3248
+    },
+    {
+      "path": "train/docker_0_span00000128_00000160_1a927f324bdd_shard0000.npz",
+      "source_id": "docker",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "docker_0_span00000128_00000160_1a927f324bdd",
+      "shard_index": 0,
+      "n_steps": 32,
+      "padded": false,
+      "shape": {
+        "camera_position": [
+          3
+        ],
+        "camera_z_axis": [
+          3
+        ],
+        "tracking_confidence": [],
+        "contact": [],
+        "command": [
+          3
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "camera_position": "float32",
+        "camera_z_axis": "float32",
+        "tracking_confidence": "float32",
+        "contact": "float32",
+        "command": "float32",
+        "_present": "bool"
+      },
+      "sha256": "0ca8c0dd4712f4f2b6d4144646c87861cde9058406b65f2fa9cc1f26f9271501",
+      "size_bytes": 3248
+    },
+    {
+      "path": "train/docker_0_span00000192_00000224_012c6a765e43_shard0000.npz",
+      "source_id": "docker",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "docker_0_span00000192_00000224_012c6a765e43",
+      "shard_index": 0,
+      "n_steps": 32,
+      "padded": false,
+      "shape": {
+        "camera_position": [
+          3
+        ],
+        "camera_z_axis": [
+          3
+        ],
+        "tracking_confidence": [],
+        "contact": [],
+        "command": [
+          3
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "camera_position": "float32",
+        "camera_z_axis": "float32",
+        "tracking_confidence": "float32",
+        "contact": "float32",
+        "command": "float32",
+        "_present": "bool"
+      },
+      "sha256": "46da901836cad6ec1af937b13585349e8a9de05762d9a2944315e41944ae66df",
+      "size_bytes": 3248
+    },
+    {
+      "path": "train/glitch_0_span00000192_00000224_d70ea35127ef_shard0000.npz",
+      "source_id": "glitch",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "train",
+      "track_id": "glitch_0_span00000192_00000224_d70ea35127ef",
+      "shard_index": 0,
+      "n_steps": 32,
+      "padded": false,
+      "shape": {
+        "camera_position": [
+          3
+        ],
+        "camera_z_axis": [
+          3
+        ],
+        "tracking_confidence": [],
+        "contact": [],
+        "command": [
+          3
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "camera_position": "float32",
+        "camera_z_axis": "float32",
+        "tracking_confidence": "float32",
+        "contact": "float32",
+        "command": "float32",
+        "_present": "bool"
+      },
+      "sha256": "0622eaaacd6df764c5e517ba9fe2184030236bda15bbd88154f075c589c5692e",
+      "size_bytes": 3248
+    },
+    {
+      "path": "test/picker_0_span00000192_00000224_89e7df88b7cb_shard0000.npz",
+      "source_id": "picker",
+      "entity_id": "{\"type\":\"builtins.int\",\"value\":0}",
+      "split": "test",
+      "track_id": "picker_0_span00000192_00000224_89e7df88b7cb",
+      "shard_index": 0,
+      "n_steps": 32,
+      "padded": false,
+      "shape": {
+        "camera_position": [
+          3
+        ],
+        "camera_z_axis": [
+          3
+        ],
+        "tracking_confidence": [],
+        "contact": [],
+        "command": [
+          3
+        ],
+        "_present": []
+      },
+      "dtype": {
+        "camera_position": "float32",
+        "camera_z_axis": "float32",
+        "tracking_confidence": "float32",
+        "contact": "float32",
+        "command": "float32",
+        "_present": "bool"
+      },
+      "sha256": "c1cf99db002804e2322c94dcdd09345e053ec3e278d951210d8eb363c82e1c7a",
+      "size_bytes": 3248
+    }
+  ],
+  "budget": {
+    "requested_seconds": {
+      "train": 12.8,
+      "test": 3.2
+    },
+    "admitted_seconds": {
+      "train": 12.8,
+      "test": 3.2
+    },
+    "underfill_seconds": {
+      "train": 0.0,
+      "test": 0.0
+    },
+    "candidate_seconds": {
+      "train": 12.8,
+      "test": 6.4
+    },
+    "items_total": 32,
+    "items_admitted": 5,
+    "items_rejected_nonfinite": 26,
+    "items_rejected_group_cap": 0,
+    "review": {
+      "decision_counts": {
+        "budget-filled": 1,
+        "nonfinite-priority": 26,
+        "priority": 5
+      },
+      "priority": {
+        "admitted": {
+          "min": -8.0,
+          "max": -1.0,
+          "count": 5,
+          "mean": -4.6
+        },
+        "rejected": {
+          "min": -6.0,
+          "max": -6.0,
+          "count": 1,
+          "mean": -6.0
+        }
+      },
+      "examples": {
+        "admitted": [
+          {
+            "id": [
+              "picker",
+              0,
+              6
+            ],
+            "source": "picker",
+            "split": "test",
+            "priority": -1.0,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 192,
+            "end": 224,
+            "decision": "priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              4
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": -3.0,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 128,
+            "end": 160,
+            "decision": "priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              5
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": -4.0,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 160,
+            "end": 192,
+            "decision": "priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              6
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": -7.0,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 192,
+            "end": 224,
+            "decision": "priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              6
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": -8.0,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 192,
+            "end": 224,
+            "decision": "priority"
+          }
+        ],
+        "rejected": [
+          {
+            "id": [
+              "picker",
+              0,
+              4
+            ],
+            "source": "picker",
+            "split": "test",
+            "priority": -6.0,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 128,
+            "end": 160,
+            "decision": "budget-filled"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              0
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 0,
+            "end": 32,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              1
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 32,
+            "end": 64,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              2
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 64,
+            "end": 96,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              3
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 96,
+            "end": 128,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              4
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 128,
+            "end": 160,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              6
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 192,
+            "end": 224,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "aisle",
+              0,
+              7
+            ],
+            "source": "aisle",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 224,
+            "end": 256,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              0
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 0,
+            "end": 32,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              1
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 32,
+            "end": 64,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              2
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 64,
+            "end": 96,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              3
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 96,
+            "end": 128,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              5
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 160,
+            "end": 192,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "docker",
+              0,
+              7
+            ],
+            "source": "docker",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 224,
+            "end": 256,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              0
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 0,
+            "end": 32,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              1
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 32,
+            "end": 64,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              2
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 64,
+            "end": 96,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              3
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 96,
+            "end": 128,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              4
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 128,
+            "end": 160,
+            "decision": "nonfinite-priority"
+          },
+          {
+            "id": [
+              "glitch",
+              0,
+              5
+            ],
+            "source": "glitch",
+            "split": "train",
+            "priority": null,
+            "seconds": 3.2,
+            "group": null,
+            "tags": [],
+            "start": 160,
+            "end": 192,
+            "decision": "nonfinite-priority"
+          }
+        ]
+      }
+    },
+    "emitted_seconds": {
+      "train": 12.8,
+      "test": 3.2
+    },
+    "emission_loss_seconds": {
+      "train": 0.0,
+      "test": 0.0
+    },
+    "emitted_underfill_seconds": {
+      "train": 0.0,
+      "test": 0.0
+    }
+  }
+}

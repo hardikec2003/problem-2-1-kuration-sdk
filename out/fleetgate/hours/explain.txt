@@ -1,0 +1,6 @@
+source: TickAdapter (4 source(s))
+schema: fleet-shift
+window: 32 steps (stride 32)
+selection: uniform-bins (hours=0.0035555555555555557)
+execution: local; errors=raise; total-pool materialization=none
+optional extras: slam
